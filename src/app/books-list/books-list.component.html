@@ -1,0 +1,64 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <img src="../../assets/images/bg.jpeg" class="center">
+  </div>
+  <div class="row">
+    <div class="col-md-offset-1 col-md-10">
+      <h3>Library Books List </h3>
+      <!-- FIXED ADD BUTTON BELOW -->
+      <a *ngIf="userRole === 'admin'" (click)="addBook()" class="btn btn-primary">
+        <i class="fa fa-plus"></i> Add a book
+      </a>
+
+      <br>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th class="text-center">Author</th>
+              <th class="text-center">Genre</th>
+              <th class="text-center">Available</th>
+              <th class="text-center">Return Date</th>
+              <th class="text-center">Overdue Fees</th>
+              <th class="text-center">Currently With</th>
+              <th *ngIf="userRole === 'admin'" class="text-center"></th>
+              <th *ngIf="userRole === 'admin'" class="text-center"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Template Row -->
+            <tr *ngFor="let book of books">
+              <td>{{ book.Title }}</td>
+              <td class="text-center">{{ book.Author }}</td>
+              <td class="text-center">{{ book.Genre }}</td>
+              <td class="text-center">{{ book.Available }}</td>
+              <td class="text-center">{{ book.Return_date }}</td>
+              <td class="text-center">${{ book.Overdue_fees }}</td>
+              <td class="text-center">{{ book.Currently_with }}</td>
+
+              <td *ngIf="userRole === 'admin'" class="text-center">
+                <!-- EDIT BUTTON -->
+                <a [routerLink]="['/books/details', book._id]" class="btn btn-primary btn-sm">
+                  <i class="fas fa-pencil-alt"></i>Edit
+                </a>
+              </td>
+
+              <td class="text-center">
+                <!-- DELETE BUTTON -->
+                <a (click)="onDelete(book)" class="btn btn-danger btn-sm">
+                  <i class="fa fa-times" aria-hidden="true">delete</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-offset-1 col-md-10 text-center">
+        <ul class="pagination pagination-lg pager" id="myPager"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

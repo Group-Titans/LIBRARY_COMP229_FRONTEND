@@ -1,0 +1,27 @@
+<!-- Registration Form -->
+<h1>Register</h1>
+<!--p *ngIf="messages.registrationError" class="error">{{messages.registrationError[0]}}</p-->
+
+<form [formGroup]="registrationForm" class="register-form">
+    <!-- Your form controls here -->
+    <label for="newUsername">New Username:</label>
+    <input class="form-control" type="text" formControlName="username" placeholder="New Username" required>
+  
+    <label for="newPassword">New Password:</label>
+    <input class="form-control" type="password" formControlName="password" placeholder="New Password" required>
+  
+  
+    <label for="firstName">First Name:</label>
+    <input class="form-control" type="text" formControlName="userDetail.firstName" placeholder="First Name" required>
+
+    <label for="lastName">Last Name:</label>
+    <input class="form-control" type="text" formControlName="userDetail.lastName" placeholder="Last Name" required>
+
+    <label for="email">Email:</label>
+    <input class="form-control" type="email" formControlName="userDetail.email" placeholder="Email" required>
+ 
+
+  <button type="button" (click)="registerUser()">Register</button>
+
+
+</form>

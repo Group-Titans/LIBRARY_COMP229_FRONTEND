@@ -1,0 +1,10 @@
+/* header.component.css */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-nav li {
+    margin-right: 15px; /* Adjust the spacing between items as needed */
+  }
+  

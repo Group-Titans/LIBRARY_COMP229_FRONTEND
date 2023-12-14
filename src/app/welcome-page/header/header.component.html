@@ -1,0 +1,24 @@
+<nav class="navbar navbar-inverse header" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/index">
+      <img src="../../../assets/images/logo.jpeg" alt="Titans Library Logo" class="logo-img">
+      Titans Library
+    </a>
+  </div>
+
+  <ul class="nav navbar-nav">
+    <li class="active"><a href="/index"><i class="fa fa-home fa-lg"></i> Home</a></li>
+    <li><a href="/overduefees"><i class="fa fa-warning fa-lg"></i> About Overdue Fees</a></li>
+    
+    <li *ngIf="isAdmin()"><a href="/books"><i class="fa fa-book fa-lg"></i> Library Inventory</a></li> 
+    <!-- <li><a href="/books"><i class="fa fa-book fa-lg"></i> Library Inventory</a></li> -->
+    <li><a href="/contact"><i class="fa fa-phone fa-lg"></i> Contact</a></li>
+
+    <ng-container *ngIf="isLoggedIn(); else loginLogout">
+      <li><a href="/logout"><i class="fa fa-book fa-lg"></i> Logout</a></li>
+    </ng-container>
+    <ng-template #loginLogout>
+      <li><a href="/login"><i class="fa fa-book fa-lg"></i> Login</a></li>
+    </ng-template>
+  </ul>
+</nav>
